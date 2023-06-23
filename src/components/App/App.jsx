@@ -55,7 +55,7 @@ export default function App() {
       let newShoppingCart = [...shoppingCart];
       if (newShoppingCart[index].quantity == 1) {
         //remove item from cart.
-        //donnot know how to implement yet
+        //dgionnot know how to implement yet
         console.log("wait");
       } else {
         newShoppingCart[index].quantity = newShoppingCart[index].quantity - 1;
