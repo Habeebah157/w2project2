@@ -22,6 +22,7 @@ export default function App() {
 
   const handleAddItemToCart = (e) => {
     const id = e.target.value;
+    console.log(e.target.value);
 
     let itemAlreadyInCart = shoppingCart.filter(
       (item) => parseInt(item.itemId) === parseInt(id)
@@ -101,12 +102,9 @@ export default function App() {
               </main>
             }
           />
-          {/* <Route
-            path="/AllCategories"
-            element={<Home products={productList} />}
-          /> */}
+
           <Route
-            path="/products/:productId"
+            path="/products/:productid"
             element={
               <main>
                 <ProductDetail

@@ -3,6 +3,9 @@ const morgan = require("morgan");
 
 const app = express();
 app.use(morgan("tiny"));
+app.get("/", async (req, res) => {
+  res.status(200).json({ ping: "pong" });
+});
 
 const port = 3000;
 

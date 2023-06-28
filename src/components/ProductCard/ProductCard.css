@@ -1,13 +1,9 @@
 .img-resize {
   height: 300px;
-  width: auto;
+  width: 300px;
+  border: double;
+  border-color: green;
 }
-.product-card {
-  display: grid;
-  gap: 3rem;
-  margin: 20px;
-  /* grid-template-columns: 1fr 1fr 1fr; */
-}
-.product-name {
-  border-radius: 20px;
-}
+/* button{
+
+} */

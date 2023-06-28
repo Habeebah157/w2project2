@@ -5,11 +5,13 @@ import "./ProductCard.css";
 const ProductCard = ({
   product,
   productQuantity,
+  productId,
   handleAddItemToCart,
   handleRemoveItemFromCart,
   shoppingCart,
 }) => {
-  const { productId } = useParams();
+  const { productid } = useParams();
+  console.log(productQuantity);
   // const decrement = (event) => {
   //   setProductQuantity(productQuantity - 1);
   //   handleRemoveItemFromCart;
@@ -32,7 +34,7 @@ const ProductCard = ({
     <div className="product-card">
       <div className="product-name">
         <div className="media">
-          <Link to={`/products/${productId}`}>
+          <Link to={`/products/${productid}`}>
             <img className="img-resize" src={product.image} />
           </Link>
         </div>

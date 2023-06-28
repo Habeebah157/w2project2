@@ -6,7 +6,9 @@ import { useState } from "react";
 // import { BiSolidCartAdd } from "react-icons/fa";
 // // import { AiOutlineShoppingCart } from "react-icons/fa";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+
 import PointOfSaleIcon from "@mui/icons-material/PointOfSale";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
 
@@ -28,8 +30,15 @@ export default function Sidebar({
   return (
     <section className={isOpen ? "sidebar open" : "sidebar closed"}>
       <ArrowRightAltIcon onClick={() => setIsOpen(!isOpen)}></ArrowRightAltIcon>
+      <br></br>
+      <br></br>
+
       {isOpen ? (
-        <ShoppingCart products={products} shoppingCart={shoppingCart} />
+        <ShoppingCart
+          products={products}
+          shoppingCart={shoppingCart}
+          isOpen={isOpen}
+        />
       ) : null}
     </section>
   );

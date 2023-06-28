@@ -32,7 +32,7 @@ const CheckoutForm = ({
                 product.quantity +
                 " total " +
                 products[product.itemId - 1].name +
-                " purshased at a cost of $4.99 for a total cost of $4.99"}
+                " purchased at a cost of $4.99 for a total cost of $4.99"}
             </li>
           );
         })}

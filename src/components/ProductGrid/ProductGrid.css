@@ -1,0 +1,12 @@
+.picture {
+  object-fit: cover;
+  object-position: bottom;
+  padding: 5px;
+  border: double;
+}
+#AllCategories {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}

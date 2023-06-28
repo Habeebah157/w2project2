@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import "./ShoppingCart.css";
 import CheckoutForm from "../CheckoutForm/CheckoutForm";
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+
 const ShoppingCart = ({ isOpen, products, shoppingCart }) => {
   const [novalueInShoppingCart, setNoValueInShoppingCart] = useState(true);
   const [productValues, setProductValues] = useState([]);
@@ -47,55 +50,73 @@ const ShoppingCart = ({ isOpen, products, shoppingCart }) => {
     <>
       {/* //if the add button is pressed, then it should remove the no items added
       to cart yet */}
-      <h3>Shopping Cart</h3>
+      <h3>
+        Shopping Cart <AddShoppingCartIcon></AddShoppingCartIcon>
+      </h3>
       {/* {novalueInShoppingCart && (
         <p>No items added to cart yet. Start shopping now!</p>
       )} */}
-      {shoppingCart.length <= 0 ? (
-        <div>No items added to cart yet</div>
-      ) : (
+
+      {shoppingCart.length <= 0 ? <div>No items added to cart yet</div> : null}
+      {shoppingCart.length > 0 ? (
         <table>
-          <h2>{"Name|Quantity|Unit Price|Cost"}</h2>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Quantity</th>
+              <th>Unit Price</th>
+              <th>Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {shoppingCart.map((item) => {
+              console.log(item.itemId - 1);
+              subtotal =
+                subtotal + products[item.itemId - 1].price * item.quantity;
+              subplustaxesAndFees = subtotal * 0.07;
+              total = subtotal + subplustaxesAndFees;
+              return (
+                <tr className={itemId}>
+                  <td>{products[item.itemId - 1].name}</td>
+                  <td>{item.quantity}</td>
+                  <td>{products[item.itemId - 1].price}</td>
+                  <td>{products[item.itemId - 1].price * item.quantity}</td>
+                </tr>
+              );
+            })}
+          </tbody>
         </table>
-      )}
-
-      <div className="MyTable-Tr">
-        {console.log(shoppingCart.length)}
-        {shoppingCart.map((item) => {
-          console.log(item.itemId - 1);
-          subtotal = subtotal + products[item.itemId - 1].price * item.quantity;
-          subplustaxesAndFees = subtotal * 0.07;
-          total = subtotal + subplustaxesAndFees;
-          return (
-            <p className={itemId}>
-              {products[item.itemId - 1].name},{"  "} {item.quantity} ,
-              {products[item.itemId - 1].price},{" "}
-              {products[item.itemId - 1].price * item.quantity}
-            </p>
-          );
-        })}
-      </div>
-
-      {shoppingCart.length > 0 ? (
-        <div>
-          <p>Subtotal: {subtotal}</p>
-        </div>
       ) : null}
 
       {shoppingCart.length > 0 ? (
-        <p>
-          Taxes and Fees:{" "}
-          {(Math.round(subplustaxesAndFees * 100) / 100).toFixed(2)}
-        </p>
+        <table>
+          <tr>
+            <td>Subtotal</td>
+            <td>{(Math.round(subtotal * 100) / 100).toFixed(2)}</td>
+          </tr>
+        </table>
+      ) : null}
+
+      {shoppingCart.length > 0 ? (
+        <table>
+          <tr>
+            <td>Taxes and Fees</td>
+            <td>{(Math.round(subplustaxesAndFees * 100) / 100).toFixed(2)}</td>
+          </tr>
+        </table>
       ) : null}
       {shoppingCart.length > 0 ? (
-        <p>Total:{(Math.round(total * 100) / 100).toFixed(2)}</p>
+        <table>
+          <tr>
+            <td>Total</td>
+            <td>{(Math.round(total * 100) / 100).toFixed(2)}</td>
+          </tr>
+        </table>
       ) : null}
-      {/* {shoppingCart.length > 0 ? { subtotal } : null} */}
 
-      {/* {!shoppingCart.length ? <p>{subtotal}</p> : " "} */}
-
-      <h3>Payment Info</h3>
+      <h3>
+        Payment Info<ShoppingBasketIcon></ShoppingBasketIcon>
+      </h3>
       <form>
         <label>Name</label>
         <input

@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "../ProductCard/ProductCard";
 import { useEffect, useState } from "react";
+import "./ProductGrid.css";
 
 const ProductGrid = ({
   products,
@@ -22,14 +23,16 @@ const ProductGrid = ({
     >
       {products.map((product) => {
         return (
-          <ProductCard
-            key={product.id}
-            product={product}
-            productId={product.id}
-            handleAddItemToCart={handleAddItemToCart}
-            handleRemoveItemFromCart={handleRemoveItemFromCart}
-            shoppingCart={shoppingCart}
-          />
+          <div className="picture">
+            <ProductCard
+              key={product.id}
+              product={product}
+              productId={product.id}
+              handleAddItemToCart={handleAddItemToCart}
+              handleRemoveItemFromCart={handleRemoveItemFromCart}
+              shoppingCart={shoppingCart}
+            />
+          </div>
         );
       })}
     </div>
